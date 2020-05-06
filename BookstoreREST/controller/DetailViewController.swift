@@ -16,6 +16,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var descriptionText: UITextView!
     
+    let service = BookService()
+    var delegate: BookDelegate? = nil
+    
     func configureView() {
         // Update the user interface for the detail item.
         if let detail = detailItem {
@@ -40,6 +43,10 @@ class DetailViewController: UIViewController {
         }
     }
 
-
+    @IBAction func deleteBookAction(_ sender: UIBarButtonItem) {
+        self.delegate?.deleteBook(self)
+        
+    }
+    
 }
 

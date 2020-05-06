@@ -83,7 +83,13 @@
                         <viewLayoutGuide key="safeArea" id="VUw-jc-0yf"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
+                    <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM">
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="2dk-7C-Yg4">
+                            <connections>
+                                <action selector="deleteBookAction:" destination="JEX-9P-axG" id="9JT-rO-qZP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="authorLabel" destination="0Na-mT-Ly6" id="eOW-Xf-nsc"/>
                         <outlet property="descriptionText" destination="1Kn-yz-liS" id="f3g-Rr-SkX"/>

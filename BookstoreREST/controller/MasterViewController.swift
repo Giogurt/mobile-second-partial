@@ -8,7 +8,29 @@
 
 import UIKit
 
-class MasterViewController: UITableViewController {
+class MasterViewController: UITableViewController, BookDelegate {
+    func newBook(_ controller: AnyObject, newBook: Book) {
+        <#code#>
+    }
+    
+    func editBook(_ controller: AnyObject, editBook: Book) {
+        <#code#>
+    }
+    
+    func deleteBook(_ controller: AnyObject) {
+        let row = (tableView.indexPathForSelectedRow?.row)!
+        service.deleteBook(id: row) { (error) in
+            if let error = error {
+                print("fail to delete", error)
+                return
+            }
+            
+            print("Succesfully deleted post")
+        }
+        tableView.reloadData()
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
 
     var detailViewController: DetailViewController? = nil
     let service = BookService()
@@ -51,7 +73,7 @@ class MasterViewController: UITableViewController {
                 controller.detailItem = book
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
-                detailViewController = controller
+                controller.delegate = self
             }
         }
     }
